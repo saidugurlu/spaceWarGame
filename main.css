@@ -17,7 +17,8 @@ body {
     background-color: black;
     min-height: 100vh;
     overflow: hidden;
-    color: white
+    color: white;
+    cursor: none;
 }
 
 .gameArea {
@@ -28,12 +29,12 @@ body {
 
 .spaceShip {
     position: absolute;
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     background-image: url(./images/spaceShip.png);
     background-repeat: no-repeat;
     background-size: cover;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
 }
 
 .stars {
@@ -49,5 +50,9 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 1;
-    font-size: 2.5rem
+    font-size: 2.5rem;
+
+}
+.score  p {
+    padding: 0 1rem;
 }

@@ -27,3 +27,14 @@ for (let a = 1; a <= 1000; a++) {
   star.style.background = starSize < 4 ? "lightgray" : "white";
   gameArea.appendChild(star);
 }
+
+//  Ship movements
+gameArea.addEventListener("mousemove", (e) => {
+  x = e.clientX;
+  y = e.clientY;
+  spaceShip.style.left = x + "px";
+  if (y > window.innerHeight / 2) {
+    spaceShip.style.top = y + "px";
+  }
+ 
+});
