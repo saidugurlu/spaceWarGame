@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+:root {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Bungee Inline', cursive;
+    background-color: black;
+    min-height: 100vh;
+    overflow: hidden;
+    color: white
+}
+
+.gameArea {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh
+}
+
+.spaceShip {
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    background-image: url(./images/spaceShip.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translate(-50%, -50%);
+}
+
+.stars {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.score {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    font-size: 2.5rem
+}
