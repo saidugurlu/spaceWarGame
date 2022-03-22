@@ -34,7 +34,7 @@ body {
   background-image: url(./images/spaceShip.png);
   background-repeat: no-repeat;
   background-size: cover;
-  /* transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
 }
 
 .stars {
@@ -74,4 +74,199 @@ body {
     39% 45%
   );
   transform: translate(-50%, -10%);
+}
+
+.rock {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  top: 0px;
+  background-size: cover;
+  animation: rotateRock 1s ease-in-out infinite;
+}
+
+/* .astroidExplode {
+  background-image: url(./images/rockExplosion.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: none;
+} */
+
+/* .spaceShipExplode {
+  background-image: url(./images/shipExplosion.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: none;
+} */
+.modal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  cursor: default;
+  z-index: 1000;
+}
+.closeModal {
+  /*
+  display: none;
+   z-index: -1000; */
+  opacity: 0;
+  pointer-events: none;
+}
+.startGame {
+  padding: 0.9rem 3rem;
+  font-size: 3.5rem;
+  border: 1px solid white;
+  cursor: pointer;
+  transition: 0.2s ease;
+  letter-spacing: 0.8rem;
+}
+.startGame:hover {
+  background: rgba(109, 108, 108, 0.5);
+}
+
+/* @keyframes rotateRock {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(90deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+/* @keyframes rotateRock {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  5% {
+    transform: rotate(18deg);
+  }
+
+  10% {
+    transform: rotate(36deg);
+  }
+  15% {
+    transform: rotate(54deg);
+  }
+  20% {
+    transform: rotate(72deg);
+  }
+
+  25% {
+    transform: rotate(90deg);
+  }
+
+  30% {
+    transform: rotate(108deg);
+  }
+  35% {
+    transform: rotate(126deg);
+  }
+  40% {
+    transform: rotate(144deg);
+  }
+
+  45% {
+    transform: rotate(162deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+  55% {
+    transform: rotate(198deg);
+  }
+  60% {
+    transform: rotate(216deg);
+  }
+
+  65% {
+    transform: rotate(234deg);
+  }
+  70% {
+    transform: rotate(252deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+
+  80% {
+    transform: rotate(288deg);
+  }
+
+  85% {
+    transform: rotate(306deg);
+  }
+  90% {
+    transform: rotate(324deg);
+  }
+  95% {
+    transform: rotate(342deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+@keyframes rotateRock {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  10% {
+    transform: rotate(36deg);
+  }
+
+  20% {
+    transform: rotate(72deg);
+  }
+
+  30% {
+    transform: rotate(108deg);
+  }
+
+  40% {
+    transform: rotate(144deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  60% {
+    transform: rotate(216deg);
+  }
+
+  70% {
+    transform: rotate(252deg);
+  }
+
+  80% {
+    transform: rotate(288deg);
+  }
+
+  90% {
+    transform: rotate(324deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
