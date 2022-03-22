@@ -125,31 +125,6 @@ const rockMove = () => {
 };
 
 // Meet checking with roks and ship, ship and bottom------------------------------------------------
-// const checkCraftCollition = () => {
-//   let rocks = document.querySelectorAll(".rock");
-//   {
-//     for (let i = 0; i <= rocks.length; i++) {
-//       let rock = rocks[i];
-//       let rockBounds = rock.getBoundingClientRect(); //gives location
-//       let shipBounds = spaceShip.getBoundingClientRect();
-//       if (
-//         shipBounds.left <= rockBounds.left &&
-//         shipBounds.right >= rockBounds.right &&
-//         shipBounds.top <= rockBounds.top &&
-//         shipBounds.bottom >= rockBounds.bottom
-//       ) {
-//         setTimeout(() => {
-//           modal.classList.remove("closeModal");
-//         }, 450);
-//         shipExplosion.play();
-//         shipExplosion.currentTime = 0;
-//         spaceShip.style.backgroundImage = "url(./images/shipExplosion.png)";
-//         clearInterval(move);
-//       }
-//     }
-//   }
-// };
-
 const checkCraftCollition = () => {
   let rocks = document.querySelectorAll(".rock");
   {
@@ -157,14 +132,12 @@ const checkCraftCollition = () => {
       let rock = rocks[i];
       let rockBounds = rock.getBoundingClientRect(); //gives location
       let shipBounds = spaceShip.getBoundingClientRect();
-      const rockCenterx = (rockBounds.left + rockBounds.right) / 2;
-      const rockCentery = (rockBounds.top + rockBounds.bottom) / 2;
-      const shipCenterx = (shipBounds.left + shipBounds.right) / 2;
-      const shipCentery = (shipBounds.top + shipBounds.bottom) / 2;
-      const differencex = Math.abs(Math.abs(rockCenterx) - Math.abs(shipCenterx));
-      const differencey = Math.abs(Math.abs(rockCentery) - Math.abs(shipCentery));
-      
-      if (differencex <= 2 || differencey <= 2) {
+      if (
+        shipBounds.left <= rockBounds.left &&
+        shipBounds.right >= rockBounds.right &&
+        shipBounds.top <= rockBounds.top &&
+        shipBounds.bottom >= rockBounds.bottom
+      ) {
         setTimeout(() => {
           modal.classList.remove("closeModal");
         }, 450);
@@ -176,6 +149,33 @@ const checkCraftCollition = () => {
     }
   }
 };
+
+// const checkCraftCollition = () => {
+//   let rocks = document.querySelectorAll(".rock");
+//   {
+//     for (let i = 0; i <= rocks.length; i++) {
+//       let rock = rocks[i];
+//       let rockBounds = rock.getBoundingClientRect(); //gives location
+//       let shipBounds = spaceShip.getBoundingClientRect();
+//       const rockCenterx = (rockBounds.left + rockBounds.right) / 2;
+//       const rockCentery = (rockBounds.top + rockBounds.bottom) / 2;
+//       const shipCenterx = (shipBounds.left + shipBounds.right) / 2;
+//       const shipCentery = (shipBounds.top + shipBounds.bottom) / 2;
+//       const differencex = Math.abs(Math.abs(rockCenterx) - Math.abs(shipCenterx));
+//       const differencey = Math.abs(Math.abs(rockCentery) - Math.abs(shipCentery));
+
+//       if (differencex <= 2 || differencey <= 2) {
+//         setTimeout(() => {
+//           modal.classList.remove("closeModal");
+//         }, 450);
+//         shipExplosion.play();
+//         shipExplosion.currentTime = 0;
+//         spaceShip.style.backgroundImage = "url(./images/shipExplosion.png)";
+//         clearInterval(move);
+//       }
+//     }
+//   }
+// };
 
 // Start Button------------------------------------------------------------------------------------------
 startButton.addEventListener("click", () => {
@@ -189,6 +189,5 @@ startButton.addEventListener("click", () => {
   score = 0;
   pScore.textContent = score;
   spaceShip.style.backgroundImage = "url(./images/spaceShip.png)";
+  rockMove();
 });
-
-rockMove();
