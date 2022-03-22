@@ -85,19 +85,6 @@ body {
   animation: rotateRock 1s ease-in-out infinite;
 }
 
-/* .astroidExplode {
-  background-image: url(./images/rockExplosion.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  animation: none;
-} */
-
-/* .spaceShipExplode {
-  background-image: url(./images/shipExplosion.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  animation: none;
-} */
 .modal {
   position: absolute;
   left: 0;
@@ -106,10 +93,26 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: black;
+  justify-content: space-around;
+  flex-direction: column;
+  background-image: url(./images/modalBackround.jpg);
   cursor: default;
   z-index: 1000;
+}
+.scoreboard p {
+  font-size: 2rem;
+}
+.gameTitle {
+  font-size: 5rem;
+  letter-spacing: 1rem;
+
+  font-weight: lighter;
+  text-align: center;
+  text-shadow: rgba(255, 255, 255, 0.205) 0px 0px 5px,
+    rgba(255, 255, 255, 0.205) 0px 0px 10px,
+    rgba(255, 255, 255, 0.205) 0px 0px 15px, #3a535c 0px 0px 20px,
+    #3a535c 0px 0px 30px, #3a535c 0px 0px 40px, #3a535c 0px 0px 50px,
+    #3a535c 0px 0px 75px, 40px 40px 20px rgba(206, 89, 55, 0);
 }
 .closeModal {
   /*
@@ -123,34 +126,14 @@ body {
   font-size: 3.5rem;
   border: 1px solid white;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: 0.5s ease;
   letter-spacing: 0.8rem;
 }
 .startGame:hover {
-  background: rgba(109, 108, 108, 0.5);
+  background: #3a535c;
 }
 
-/* @keyframes rotateRock {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  25% {
-    transform: rotate(90deg);
-  }
-
-  50% {
-    transform: rotate(180deg);
-  }
-  75% {
-    transform: rotate(270deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-} */
-
-/* @keyframes rotateRock {
+@keyframes rotateRock {
   0% {
     transform: rotate(0deg);
   }
@@ -220,52 +203,6 @@ body {
   95% {
     transform: rotate(342deg);
   }
-  100% {
-    transform: rotate(360deg);
-  }
-} */
-
-@keyframes rotateRock {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  10% {
-    transform: rotate(36deg);
-  }
-
-  20% {
-    transform: rotate(72deg);
-  }
-
-  30% {
-    transform: rotate(108deg);
-  }
-
-  40% {
-    transform: rotate(144deg);
-  }
-
-  50% {
-    transform: rotate(180deg);
-  }
-
-  60% {
-    transform: rotate(216deg);
-  }
-
-  70% {
-    transform: rotate(252deg);
-  }
-
-  80% {
-    transform: rotate(288deg);
-  }
-
-  90% {
-    transform: rotate(324deg);
-  }
-
   100% {
     transform: rotate(360deg);
   }

@@ -98,25 +98,25 @@ const rockMove = () => {
     gameArea.appendChild(rock);
 
     let rockCount = document.querySelectorAll(".rock");
-    for (let i = 1; i <= rockCount.length; i++) {
+    for (let i = 0; i <= rockCount.length; i++) {
       let rockTop = parseInt(
-        window.getComputedStyle(rockCount[i - 1]).getPropertyValue("top")
+        window.getComputedStyle(rockCount[i]).getPropertyValue("top")
       );
       let rockBottom = parseInt(
-        window.getComputedStyle(rockCount[i - 1]).getPropertyValue("top")
+        window.getComputedStyle(rockCount[i]).getPropertyValue("top")
       );
 
-      rockCount[i - 1].style.top = rockTop + 20 + "px";
-      let mainFrame = gameArea.getBoundingClientRect();
-      if (rockBottom > mainFrame.bottom - 50) {
+      rockCount[i].style.top = rockTop + 20 + "px";
+      let mainFrame = gameArea.getBoundingClientRect().bottom;
+      if (rockBottom > mainFrame - 50) {
+        // Rock is deseppierd
         setTimeout(() => {
-          gameArea.removeChild(rockCount[i - 1]);
+          gameArea.removeChild(rockCount[i]);
           modal.classList.remove("closeModal");
         }, 600);
         rockExplosion.play();
         rockExplosion.currentTime = 0;
-        rockCount[i - 1].style.backgroundImage =
-          "url(./images/rockExplosion.png)";
+        rockCount[i].style.backgroundImage = "url(./images/rockExplosion.png)";
         clearInterval(move);
       }
     }
@@ -150,7 +150,7 @@ const checkCraftCollition = () => {
   }
 };
 
-// const checkCraftCollition = () => {
+// const checkCraftCollition1 = () => {
 //   let rocks = document.querySelectorAll(".rock");
 //   {
 //     for (let i = 0; i <= rocks.length; i++) {
@@ -161,10 +161,11 @@ const checkCraftCollition = () => {
 //       const rockCentery = (rockBounds.top + rockBounds.bottom) / 2;
 //       const shipCenterx = (shipBounds.left + shipBounds.right) / 2;
 //       const shipCentery = (shipBounds.top + shipBounds.bottom) / 2;
-//       const differencex = Math.abs(Math.abs(rockCenterx) - Math.abs(shipCenterx));
-//       const differencey = Math.abs(Math.abs(rockCentery) - Math.abs(shipCentery));
 
-//       if (differencex <= 2 || differencey <= 2) {
+//       if (
+//         Math.abs(rockCenterx - shipCenterx) <= 1.5 ||
+//         Math.abs(rockCentery - shipCentery) <= 1.5
+//       ) {
 //         setTimeout(() => {
 //           modal.classList.remove("closeModal");
 //         }, 450);
@@ -191,3 +192,5 @@ startButton.addEventListener("click", () => {
   spaceShip.style.backgroundImage = "url(./images/spaceShip.png)";
   rockMove();
 });
+
+// Scoreboard----------------------------------------------------------------------------------------------
