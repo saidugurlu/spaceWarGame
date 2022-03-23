@@ -3,6 +3,7 @@ const spaceShip = document.querySelector(".spaceShip");
 const pScore = document.querySelector(".score p");
 const modal = document.querySelector(".modal");
 const startButton = document.querySelector(".startGame");
+let isPlaying = false;
 
 //sounds effects
 let laser = new Audio("../sounds/laserShot.wav");
@@ -30,7 +31,7 @@ for (let a = 1; a <= 1000; a++) {
   gameArea.appendChild(star);
 }
 
-//  Ship movements-----------------------------------------------------------------------
+// Ship movements-----------------------------------------------------------------------
 gameArea.addEventListener("mousemove", (e) => {
   x = e.clientX;
   y = e.clientY;
@@ -41,7 +42,7 @@ gameArea.addEventListener("mousemove", (e) => {
 });
 
 // Creation of a laser gun-----------------------------------------------------------------
-gameArea.addEventListener("click", () => {
+const createBullet = () => {
   velocity = velocity + 0.5;
   let bullet = document.createElement("div");
   bullet.classList.add("bullet");
@@ -82,6 +83,15 @@ gameArea.addEventListener("click", () => {
       gameArea.removeChild(bullet); // so that HTML does not slow down
     }
   });
+};
+gameArea.addEventListener("click", () => {
+  createBullet();
+});
+
+window.addEventListener("keydown", () => {
+  if (isPlaying) {
+    createBullet();
+  }
 });
 
 // Creating rocks, and rocks moves-------------------------------------------------------------
@@ -98,7 +108,7 @@ const rockMove = () => {
     gameArea.appendChild(rock);
 
     let rockCount = document.querySelectorAll(".rock");
-    for (let i = 0; i <= rockCount.length; i++) {
+    for (let i = 0; i < rockCount.length; i++) {
       let rockTop = parseInt(
         window.getComputedStyle(rockCount[i]).getPropertyValue("top")
       );
@@ -107,9 +117,8 @@ const rockMove = () => {
       );
 
       rockCount[i].style.top = rockTop + 20 + "px";
-      let mainFrame = gameArea.getBoundingClientRect().bottom;
-      if (rockBottom > mainFrame - 50) {
-        // Rock is deseppierd
+      let mainFrame = gameArea.getBoundingClientRect();
+      if (rockBottom > mainFrame.bottom - 50) {
         setTimeout(() => {
           gameArea.removeChild(rockCount[i]);
           modal.classList.remove("closeModal");
@@ -117,10 +126,12 @@ const rockMove = () => {
         rockExplosion.play();
         rockExplosion.currentTime = 0;
         rockCount[i].style.backgroundImage = "url(./images/rockExplosion.png)";
+        isPlaying = false;
         clearInterval(move);
       }
     }
     checkCraftCollition();
+    //checkCraftCollition1();
   }, 450 / velocity);
 };
 
@@ -144,6 +155,7 @@ const checkCraftCollition = () => {
         shipExplosion.play();
         shipExplosion.currentTime = 0;
         spaceShip.style.backgroundImage = "url(./images/shipExplosion.png)";
+        isPlaying = false;
         clearInterval(move);
       }
     }
@@ -173,6 +185,7 @@ const checkCraftCollition = () => {
 //         shipExplosion.currentTime = 0;
 //         spaceShip.style.backgroundImage = "url(./images/shipExplosion.png)";
 //         clearInterval(move);
+//         isPlaying = false;
 //       }
 //     }
 //   }
@@ -190,7 +203,6 @@ startButton.addEventListener("click", () => {
   score = 0;
   pScore.textContent = score;
   spaceShip.style.backgroundImage = "url(./images/spaceShip.png)";
+  isPlaying = true;
   rockMove();
 });
-
-// Scoreboard----------------------------------------------------------------------------------------------
