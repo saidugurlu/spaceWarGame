@@ -99,6 +99,7 @@ body {
   cursor: default;
   z-index: 1000;
 }
+
 .scoreboard p {
   font-size: 2rem;
 }
@@ -131,6 +132,13 @@ body {
 }
 .startGame:hover {
   background: #3a535c;
+}
+
+.listItem {
+  color: white;
+  font-weight: 300;
+  letter-spacing: 0.5;
+  padding: 1rem;
 }
 
 @keyframes rotateRock {

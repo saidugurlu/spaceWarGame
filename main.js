@@ -4,6 +4,8 @@ const pScore = document.querySelector(".score p");
 const modal = document.querySelector(".modal");
 const startButton = document.querySelector(".startGame");
 let isPlaying = false;
+const scoreList = document.querySelector(".listGroup");
+document.addEventListener("DOMContentLoaded", addScoresToUI);
 
 //sounds effects
 let laser = new Audio("../sounds/laserShot.wav");
@@ -51,6 +53,8 @@ const createBullet = () => {
   gameArea.appendChild(bullet);
   laser.play();
   laser.currentTime = 0;
+
+  // Meet checking with roks and bullet-----------------------------------------------------
   setInterval(() => {
     let rocks = document.querySelectorAll(".rock");
     for (let i = 0; i < rocks.length; i++) {
@@ -77,7 +81,7 @@ const createBullet = () => {
 
     let bulletTop = parseInt(
       window.getComputedStyle(bullet).getPropertyValue("top")
-    );
+    ); // px out
     bullet.style.top = bulletTop - 6 + "px";
     if (bulletTop < 0) {
       gameArea.removeChild(bullet); // so that HTML does not slow down
@@ -88,11 +92,21 @@ gameArea.addEventListener("click", () => {
   createBullet();
 });
 
-window.addEventListener("keydown", () => {
-  if (isPlaying) {
+window.addEventListener("keydown", (e) => {
+  if (isPlaying && e.key === " ") {
     createBullet();
   }
 });
+
+// Bullet clear--------------------------------------------------------------
+// function bulletClear() {
+//   let bullets = document.querySelectorAll(".bullet");
+
+//   if (bullets.length > 5) {
+//     window.removeChild(bullets[bullets.length - 1]);
+//   }
+// }
+// bulletClear();
 
 // Creating rocks, and rocks moves-------------------------------------------------------------
 const rockMove = () => {
@@ -127,11 +141,12 @@ const rockMove = () => {
         rockExplosion.currentTime = 0;
         rockCount[i].style.backgroundImage = "url(./images/rockExplosion.png)";
         isPlaying = false;
+        gameOver();
         clearInterval(move);
       }
     }
     checkCraftCollition();
-    //checkCraftCollition1();
+    // checkCraftCollition1();
   }, 450 / velocity);
 };
 
@@ -156,6 +171,7 @@ const checkCraftCollition = () => {
         shipExplosion.currentTime = 0;
         spaceShip.style.backgroundImage = "url(./images/shipExplosion.png)";
         isPlaying = false;
+        gameOver();
         clearInterval(move);
       }
     }
@@ -206,3 +222,51 @@ startButton.addEventListener("click", () => {
   isPlaying = true;
   rockMove();
 });
+// Score from localStorage to UI--------------------------------------------------------------------------
+
+function addScoresToUI() {
+  let scores = getScoresFromStorage();
+  scores.forEach((score) => {
+    const listItem = document.createElement("li");
+    listItem.className = "listItem";
+    listItem.innerHTML = score;
+    scoreList.appendChild(listItem);
+  });
+}
+
+// Game Over----------------------------------------------------------------------------------
+function gameOver() {
+  // add score localStorage----------------------
+  addScoreToStorage(score);
+  function addScoreToStorage(e) {
+    let scores = getScoresFromStorage();
+    scores.push(e);
+    localStorage.setItem("scores", JSON.stringify(scores));
+  }
+
+  // Delete from localStorage ------------------------------
+  let scores = getScoresFromStorage();
+  deleteScoreFromStorage(scores);
+
+  function deleteScoreFromStorage(scores) {
+    scores.forEach(function (score, i) {
+      if (scores.length > 3) {
+        scores.splice(Math.min(score)[i], 1);
+        scores.sort(function (a, b) {
+          return b - a;
+        });
+      }
+    });
+    localStorage.setItem("scores", JSON.stringify(scores));
+  }
+}
+// get from localStorage ----------------------
+function getScoresFromStorage() {
+  let scores;
+  if (localStorage.getItem("scores") === null) {
+    scores = [];
+  } else {
+    scores = JSON.parse(localStorage.getItem("scores"));
+  }
+  return scores;
+}
