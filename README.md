@@ -1,19 +1,13 @@
-# spaceWarGame
-## Projeckt orackle_interior_architecture 
+# Interstellar Space War Game
 
-![reference image](img/Orackle-screen1.png)
+![reference image](images/readme1.png.png)
 
+> - In diesem Spiel wurde mit HTML, CSS und Vanilla JS entwickelt.
 
-> - In diesem Projekt wollte ich guten strukturierten HTML- und CSS-Code schreiben.
+> - Die Bewegungen des SpaceShip werden mit der Maus vorgegeben. Gleichzeitig kann mit der Leertaste geschossen werden.
 
-> - Ich habe versucht, ein Seitendesign zu erstellen, das den Benutzer nicht ermüdet und nicht zu kompliziert ist.
+> - Der Punktestand/Score der letzten 3 Spiele wird im LocalStorage erfasst und auf der Startseite angezeigt.
 
-> - Ich habe eine Overlay-Bibliothek verwendet, um Bilder als Overlays anzuzeigen. [Fancybox](https://fancyapps.com/docs/ui/fancybox/)
+> - Genieße das Spiel :)
 
-> - Für Slieder habe ich Hilfe von Open Source bekommen.
-
-> - Ich hatte die Gelegenheit, meinen ersten Java-Script-Code in der Responsive-Phase der Seite zu schreiben.
-
-> - Ich kann "Browser-Präfix" als fehlenden Teil meines Projekts sagen. Ich habe das Projekt nur auf Google Chrome ausprobiert.
-
-![reference image](img/oracke-screen2.png)
+![reference image](images/readme2.png.png)

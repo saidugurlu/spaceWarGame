@@ -100,10 +100,12 @@ window.addEventListener("keydown", (e) => {
 
 // Bullet clear--------------------------------------------------------------
 // function bulletClear() {
-//   let bullets = document.querySelectorAll(".bullet");
 
-//   if (bullets.length > 5) {
-//     window.removeChild(bullets[bullets.length - 1]);
+//   console.log(bullets)
+//   console.log([...bullets])
+
+//   if ([...bullets].length > 5) {
+//     window.removeChild([...bullets][0]);
 //   }
 // }
 // bulletClear();
@@ -145,7 +147,7 @@ const rockMove = () => {
         clearInterval(move);
       }
     }
-    checkCraftCollition();
+     checkCraftCollition();
     // checkCraftCollition1();
   }, 450 / velocity);
 };
