@@ -10,4 +10,6 @@
 
 > - [Genieße das Spiel](https://interstellar-space-war.netlify.app/) :video_game: :ghost:
 
+- Alternative Link: https://interstellar-space-war.netlify.app/
+
 ![reference image](/images/readme2.png)
