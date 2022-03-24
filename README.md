@@ -8,6 +8,6 @@
 
 > - Der Punktestand/Score der letzten 3 Spiele wird im LocalStorage erfasst und auf der Startseite angezeigt.
 
-> - .[Genieße das Spiel].(interstellar-space-war.netlify.app) :video_game: :ghost:
+> - [Genieße das Spiel](interstellar-space-war.netlify.app) :video_game: :ghost:
 
 ![reference image](/images/readme2.png)
