@@ -1,6 +1,6 @@
 # Interstellar Space War Game
 
-![reference image](images/readme1.png.png)
+![reference image](/images/readme1.png)
 
 > - In diesem Spiel wurde mit HTML, CSS und Vanilla JS entwickelt.
 
@@ -10,4 +10,4 @@
 
 > - Genieße das Spiel :)
 
-![reference image](images/readme2.png.png)
+![reference image](/images/readme2.png)
