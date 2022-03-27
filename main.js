@@ -147,7 +147,7 @@ const rockMove = () => {
         clearInterval(move);
       }
     }
-     checkCraftCollition();
+    checkCraftCollition();
     // checkCraftCollition1();
   }, 450 / velocity);
 };
